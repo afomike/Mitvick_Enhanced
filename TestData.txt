@@ -1,0 +1,46 @@
+1. Information Gathering
+Form Fields:
+
+Target Name: John Doe
+Target Email: johndoe@example.com
+Target Phone Number: 555-1234
+Target Address: 123 Elm Street, Springfield
+Target Company: Springfield Industries
+Additional Information: John is the IT manager at Springfield Industries.
+2. Developing Relationships
+Form Fields:
+
+Type of Relationship: Professional Contact
+Methods of Interaction: Email, LinkedIn
+Expected Outcomes: Build rapport and gain access to internal systems or data.
+3. Exploiting Relationships
+Form Fields:
+
+Method of Exploitation: Phishing Email
+Information Exploited: Login credentials to the company’s internal network.
+Expected Outcome: Gain unauthorized access to sensitive company information.
+4. Execution of the Attack
+Form Fields:
+
+Method of Attack: Spear Phishing
+Target of the Attack: John Doe
+Details of the Attack: Sent a fake security alert email requesting John to verify his login credentials.
+Outcome of the Attack: Successfully obtained John’s login credentials.
+5. Achieving the Objective
+Form Fields:
+
+Objective Achieved: Access to company’s internal network
+Details of Achievements: Successfully logged into the company’s internal network and accessed confidential files.
+Next Steps: Explore the network for additional sensitive information and determine further actions based on the findings.
+6. Retreat
+Form Fields:
+
+Method of Retreat: Remove traces of the attack
+Details of Retreat: Deleted the phishing email from John’s inbox and cleared server logs.
+Reflection on the Attack: The attack was successful, but future attempts should consider varying attack vectors to avoid detection.
+Testing Instructions
+Start the Flask Application: Ensure your Flask application is running with python app.py.
+Navigate to Each Phase: Open your web browser and navigate to each phase URL (e.g., /gather_info, /develop_relationships, etc.).
+Enter Sample Data: Fill out each form using the sample inputs provided above.
+Submit the Form: Click the "Submit" button and verify that the application redirects to the next phase or handles the data as expected.
+Check Data Storage: If applicable, check your data storage (e.g., database or file) to confirm that the information is correctly saved and accessible.

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execution of the Attack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/execute_attack.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Execution of the Attack</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('gather_info') }}">Information Gathering</a></li>
+                <li><a href="{{ url_for('develop_relationships') }}">Developing Relationships</a></li>
+                <li><a href="{{ url_for('exploit_relationships') }}">Exploiting Relationships</a></li>
+                <li><a href="{{ url_for('achieve_objective') }}">Achieving the Objective</a></li>
+                <li><a href="{{ url_for('retreat') }}">Retreat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Execute the Attack</h2>
+            <form method="POST" action="{{ url_for('execute_attack') }}">
+                <div>
+                    <label for="attack_method">Method of Attack:</label>
+                    <input type="text" id="attack_method" name="attack_method" required>
+                </div>
+                <div>
+                    <label for="attack_target">Target of the Attack:</label>
+                    <input type="text" id="attack_target" name="attack_target" required>
+                </div>
+                <div>
+                    <label for="attack_details">Details of the Attack:</label>
+                    <textarea id="attack_details" name="attack_details"></textarea>
+                </div>
+                <div>
+                    <label for="outcome">Outcome of the Attack:</label>
+                    <textarea id="outcome" name="outcome"></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Enhanced SE Attack Cycle</p>
+    </footer>
+</body>
+</html>

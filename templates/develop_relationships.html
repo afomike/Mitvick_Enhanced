@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developing Relationships</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/develop_relationships.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Developing Relationships</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('gather_info') }}">Information Gathering</a></li>
+                <li><a href="{{ url_for('exploit_relationships') }}">Exploiting Relationships</a></li>
+                <li><a href="{{ url_for('execute_attack') }}">Execution of the Attack</a></li>
+                <li><a href="{{ url_for('achieve_objective') }}">Achieving the Objective</a></li>
+                <li><a href="{{ url_for('retreat') }}">Retreat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Document Methods and Strategies</h2>
+            <form method="POST" action="{{ url_for('develop_relationships') }}">
+                <div>
+                    <label for="target_name">Target Name:</label>
+                    <input type="text" id="target_name" name="target_name" required>
+                </div>
+                <div>
+                    <label for="relationship_method">Relationship Building Method:</label>
+                    <input type="text" id="relationship_method" name="relationship_method" required>
+                </div>
+                <div>
+                    <label for="interaction_details">Details of Interaction:</label>
+                    <textarea id="interaction_details" name="interaction_details" required></textarea>
+                </div>
+                <div>
+                    <label for="interaction_date">Date of Interaction:</label>
+                    <input type="date" id="interaction_date" name="interaction_date" required>
+                </div>
+                <div>
+                    <label for="additional_notes">Additional Notes:</label>
+                    <textarea id="additional_notes" name="additional_notes"></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Enhanced SE Attack Cycle</p>
+    </footer>
+</body>
+</html>

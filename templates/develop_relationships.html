@@ -22,27 +22,19 @@
     </header>
     <main>
         <section>
-            <h2>Document Methods and Strategies</h2>
+            <h2>Develop Relationships</h2>
             <form method="POST" action="{{ url_for('develop_relationships') }}">
                 <div>
-                    <label for="target_name">Target Name:</label>
-                    <input type="text" id="target_name" name="target_name" required>
+                    <label for="relationship_type">Type of Relationship:</label>
+                    <input type="text" id="relationship_type" name="relationship_type" required>
                 </div>
                 <div>
-                    <label for="relationship_method">Relationship Building Method:</label>
-                    <input type="text" id="relationship_method" name="relationship_method" required>
+                    <label for="interaction_methods">Methods of Interaction:</label>
+                    <textarea id="interaction_methods" name="interaction_methods"></textarea>
                 </div>
                 <div>
-                    <label for="interaction_details">Details of Interaction:</label>
-                    <textarea id="interaction_details" name="interaction_details" required></textarea>
-                </div>
-                <div>
-                    <label for="interaction_date">Date of Interaction:</label>
-                    <input type="date" id="interaction_date" name="interaction_date" required>
-                </div>
-                <div>
-                    <label for="additional_notes">Additional Notes:</label>
-                    <textarea id="additional_notes" name="additional_notes"></textarea>
+                    <label for="interaction_outcomes">Expected Outcomes:</label>
+                    <textarea id="interaction_outcomes" name="interaction_outcomes"></textarea>
                 </div>
                 <button type="submit">Submit</button>
             </form>

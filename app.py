@@ -137,8 +137,26 @@ def retreat():
         )
         db.session.add(data)
         db.session.commit()
-        return redirect(url_for('index'))  # Redirect to the homepage or another suitable page
+        return redirect(url_for('final'))  # Redirect to the final page
     return render_template('retreat.html')
+
+@app.route('/view_entries')
+def view_entries():
+    # Retrieve data from the database
+    information_gathering = InformationGathering.query.all()
+    developing_relationships = DevelopingRelationships.query.all()
+    exploiting_relationships = ExploitingRelationships.query.all()
+    execution_of_attack = ExecutionOfAttack.query.all()
+    achieving_objective = AchievingObjective.query.all()
+    retreat = Retreat.query.all()
+    
+    return render_template('view_entries.html', 
+                           information_gathering=information_gathering,
+                           developing_relationships=developing_relationships,
+                           exploiting_relationships=exploiting_relationships,
+                           execution_of_attack=execution_of_attack,
+                           achieving_objective=achieving_objective,
+                           retreat=retreat)
 
 if __name__ == '__main__':
     app.run(debug=True)

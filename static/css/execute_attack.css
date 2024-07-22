@@ -51,3 +51,11 @@ footer {
     width: 100%;
     bottom: 0;
 }
+button{
+    width: 50%;
+    margin:auto 25%;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: #333;
+    color: #fff;
+}

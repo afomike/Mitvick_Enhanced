@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Entries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>View Previous Entries</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('gather_info') }}">Information Gathering</a></li>
+                <li><a href="{{ url_for('develop_relationships') }}">Developing Relationships</a></li>
+                <li><a href="{{ url_for('exploit_relationships') }}">Exploiting Relationships</a></li>
+                <li><a href="{{ url_for('execute_attack') }}">Execution of the Attack</a></li>
+                <li><a href="{{ url_for('achieve_objective') }}">Achieving the Objective</a></li>
+                <li><a href="{{ url_for('retreat') }}">Retreat</a></li>
+                <li><a href="{{ url_for('final') }}">Final Page</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Previous Entries</h2>
+            <h3>Information Gathering</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Target Name</th>
+                        <th>Target Email</th>
+                        <th>Target Phone</th>
+                        <th>Target Address</th>
+                        <th>Target Company</th>
+                        <th>Additional Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in information_gathering %}
+                    <tr>
+                        <td>{{ entry.id }}</td>
+                        <td>{{ entry.target_name }}</td>
+                        <td>{{ entry.target_email }}</td>
+                        <td>{{ entry.target_phone }}</td>
+                        <td>{{ entry.target_address }}</td>
+                        <td>{{ entry.target_company }}</td>
+                        <td>{{ entry.additional_info }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- Repeat similar sections for other phases -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Enhanced SE Attack Cycle</p>
+    </footer>
+</body>
+</html>

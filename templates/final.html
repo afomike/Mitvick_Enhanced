@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Complete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Process Complete</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('gather_info') }}">Information Gathering</a></li>
+                <li><a href="{{ url_for('develop_relationships') }}">Developing Relationships</a></li>
+                <li><a href="{{ url_for('exploit_relationships') }}">Exploiting Relationships</a></li>
+                <li><a href="{{ url_for('execute_attack') }}">Execution of the Attack</a></li>
+                <li><a href="{{ url_for('achieve_objective') }}">Achieving the Objective</a></li>
+                <li><a href="{{ url_for('retreat') }}">Retreat</a></li>
+                <li><a href="{{ url_for('view_entries') }}">View Previous Entries</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Congratulations!</h2>
+            <p>You have completed the social engineering attack cycle.</p>
+            <p>Thank you for using our tool. You can start over or view the details of your previous entries.</p>
+            <a href="{{ url_for('index') }}">Start Over</a>
+            <a href="{{ url_for('view_entries') }}">View Previous Entries</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Enhanced SE Attack Cycle</p>
+    </footer>
+</body>
+</html>

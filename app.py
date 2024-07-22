@@ -127,6 +127,10 @@ def achieve_objective():
         return redirect(url_for('retreat'))
     return render_template('achieve_objective.html')
 
+@app.route('/final')
+def final():
+    return render_template('final.html')
+
 @app.route('/retreat', methods=['GET', 'POST'])
 def retreat():
     if request.method == 'POST':
@@ -142,7 +146,6 @@ def retreat():
 
 @app.route('/view_entries')
 def view_entries():
-    # Retrieve data from the database
     information_gathering = InformationGathering.query.all()
     developing_relationships = DevelopingRelationships.query.all()
     exploiting_relationships = ExploitingRelationships.query.all()
@@ -157,6 +160,27 @@ def view_entries():
                            execution_of_attack=execution_of_attack,
                            achieving_objective=achieving_objective,
                            retreat=retreat)
+
+@app.route('/edit_entry/<int:entry_id>', methods=['GET', 'POST'])
+def edit_entry(entry_id):
+    entry = InformationGathering.query.get_or_404(entry_id)
+    if request.method == 'POST':
+        entry.target_name = request.form['target_name']
+        entry.target_email = request.form['target_email']
+        entry.target_phone = request.form['target_phone']
+        entry.target_address = request.form['target_address']
+        entry.target_company = request.form['target_company']
+        entry.additional_info = request.form['additional_info']
+        db.session.commit()
+        return redirect(url_for('view_entries'))
+    return render_template('edit_entry.html', entry=entry)
+
+@app.route('/delete_entry/<int:entry_id>', methods=['POST'])
+def delete_entry(entry_id):
+    entry = InformationGathering.query.get_or_404(entry_id)
+    db.session.delete(entry)
+    db.session.commit()
+    return redirect(url_for('view_entries'))
 
 if __name__ == '__main__':
     app.run(debug=True)

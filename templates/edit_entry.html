@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Entry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_entry.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Edit Entry</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('gather_info') }}">Information Gathering</a></li>
+                <li><a href="{{ url_for('develop_relationships') }}">Developing Relationships</a></li>
+                <li><a href="{{ url_for('exploit_relationships') }}">Exploiting Relationships</a></li>
+                <li><a href="{{ url_for('execute_attack') }}">Execution of the Attack</a></li>
+                <li><a href="{{ url_for('achieve_objective') }}">Achieving the Objective</a></li>
+                <li><a href="{{ url_for('retreat') }}">Retreat</a></li>
+                <li><a href="{{ url_for('view_entries') }}">View Previous Entries</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Edit Information Gathering Entry</h2>
+            <form action="{{ url_for('update_entry', entry_id=entry.id) }}" method="post">
+                <label for="target_name">Target Name:</label>
+                <input type="text" id="target_name" name="target_name" value="{{ entry.target_name }}" required>
+                
+                <label for="target_email">Target Email:</label>
+                <input type="email" id="target_email" name="target_email" value="{{ entry.target_email }}" required>
+                
+                <label for="target_phone">Target Phone:</label>
+                <input type="text" id="target_phone" name="target_phone" value="{{ entry.target_phone }}" required>
+                
+                <label for="target_address">Target Address:</label>
+                <input type="text" id="target_address" name="target_address" value="{{ entry.target_address }}" required>
+                
+                <label for="target_company">Target Company:</label>
+                <input type="text" id="target_company" name="target_company" value="{{ entry.target_company }}" required>
+                
+                <label for="additional_info">Additional Information:</label>
+                <textarea id="additional_info" name="additional_info">{{ entry.additional_info }}</textarea>
+                
+                <button type="submit">Update</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Enhanced SE Attack Cycle</p>
+    </footer>
+</body>
+</html>

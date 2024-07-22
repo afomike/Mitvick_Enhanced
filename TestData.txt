@@ -38,6 +38,8 @@ Form Fields:
 Method of Retreat: Remove traces of the attack
 Details of Retreat: Deleted the phishing email from John’s inbox and cleared server logs.
 Reflection on the Attack: The attack was successful, but future attempts should consider varying attack vectors to avoid detection.
+
+
 Testing Instructions
 Start the Flask Application: Ensure your Flask application is running with python app.py.
 Navigate to Each Phase: Open your web browser and navigate to each phase URL (e.g., /gather_info, /develop_relationships, etc.).

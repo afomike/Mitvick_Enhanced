@@ -12,11 +12,40 @@ body {
     padding: 0;
     color: #fff;
     background-color: #1e3a5f;
-    background: url('../images/wall.jpg') no-repeat center center / cover;
     height: 100vh;
     overflow: hidden;
 }
+h2,h3{
+    text-align: center;
+}
+main{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
 
+}
+
+.main{
+    width: 100%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+section{
+    width: 60%;
+    margin: auto;
+
+}
+.bg-image{
+    height: 100vh;
+    background: url('../images/wall.jpg') no-repeat center center / cover;
+    filter: blur(8px);
+   -webkit-filter: blur(8px);
+}
 header {
     background-color: #333;
     color: #fff;
@@ -40,9 +69,7 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
 }
-main {
-    padding: 20px;
-}
+
 footer {
     background-color: #333;
     color: #fff;
@@ -51,4 +78,177 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+/* View Entries Page Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+table{
+    margin: auto;
+    width: 100%;
+    background-color: #000000;
+}
+th, td {
+    padding: 0.8rem;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50; /* Darker green for the header */
+    color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #4CAF50;
+    /* color:; */
+
+}
+
+.Delete {
+    /* background-color: #f44336; Red button for delete */
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+
+a {
+    color: #2196F3; /* Blue for links */
+    text-decoration: none;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+form div {
+    margin-bottom: 10px;
+}
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+button{
+    width: 50%;
+    margin:auto 25%;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: #333;
+    color: #fff;
+}
+
+.final_main {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.final_main h2 {
+    color: #4CAF50; /* Green for headings */
+    margin-bottom: 1rem;
+}
+
+.final_main p {
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+}
+
+.final_main a {
+    color: #2196F3; /* Blue for links */
+    text-decoration: none;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+.final_main a:hover {
+    text-decoration: underline;
+    background-color: #e3f2fd; /* Light blue background on hover */
+}
+
+
+.log_reg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: white;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.5em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.register-link {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.register-link a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
 }

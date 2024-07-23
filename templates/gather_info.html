@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information Gathering</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/gather_info.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     <header>
@@ -21,7 +21,8 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <div class="bg-image"></div>
+    <section class="main">
         <section>
             <h2>Collect Information</h2>
             <form method="POST" action="{{ url_for('gather_info') }}">
@@ -52,7 +53,7 @@
                 <button type="submit">Submit</button>
             </form>
         </section>
-    </main>
+    </section>
     <footer>
         <p>&copy; 2024 Enhanced SE Attack Cycle</p>
     </footer>

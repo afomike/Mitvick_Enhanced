@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Process Complete</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/final.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     <header>
@@ -22,7 +22,8 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <div class="bg-image"></div>
+    <section class="final_main">
         <section>
             <h2>Congratulations!</h2>
             <p>You have completed the social engineering attack cycle.</p>
@@ -30,7 +31,7 @@
             <a href="{{ url_for('index') }}">Start Over</a>
             <a href="{{ url_for('view_entries') }}">View Previous Entries</a>
         </section>
-    </main>
+    </section>
     <footer>
         <p>&copy; 2024 Enhanced SE Attack Cycle</p>
     </footer>

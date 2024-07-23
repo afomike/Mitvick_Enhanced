@@ -68,8 +68,8 @@ class Retreat(db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/', methods=['GET', 'POST'])
+def index():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -80,17 +80,20 @@ def login():
             
             if user and check_password_hash(user.password, password):
                 login_user(user)
-                flash('Login successful!', 'success')
-                return redirect(url_for('index'))
+                notify="welcome {username}"
+                return render_template('home.html', notify)
+                # return redirect(url_for('home'))
             else:
-                flash('Login Unsuccessful. Please check username and/or password', 'danger')
+                notify="Login Unsuccessful. Please check username and/or password"
+                return render_template('index.html', notify)
         
         except Exception as e:
-            flash('An error occurred during login. Please try again later.', 'danger')
+            notify="An error occurred during login. Please try again later."
+            return render_template('index.html', notify)
             # Log the error for debugging purposes
             app.logger.error(f'Login error: {e}')
     
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -101,8 +104,8 @@ def register():
         # Check if the username already exists
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
-            flash('Username already exists. Please choose a different username.', 'danger')
-            return redirect(url_for('register'))
+            notify="Username already exists. Please choose a different username."
+            return render_template('register.html', notify)
         
         # Hash the password
         hashed_password = generate_password_hash(password, method='sha256')
@@ -113,12 +116,13 @@ def register():
         try:
             db.session.add(new_user)
             db.session.commit()
-            flash('Your account has been created! You are now able to log in', 'success')
-            return redirect(url_for('login'))
+            notify = "Your account has been created! You are now able to log in'"
+            return render_template('register.html', notify)
+            # return redirect(url_for('index'))
         except IntegrityError:
             db.session.rollback()
-            flash('An error occurred while creating your account. Please try again.', 'danger')
-    
+            notify = "An error occurred while creating your account. Please try again."
+            return render_template('register.html', notify)
     return render_template('register.html')
 
 
@@ -126,11 +130,12 @@ def register():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
-# Home Route
-@app.route('/')
-def index():
-    return render_template('login.html')
+    return redirect(url_for('index'))
+
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 @app.route('/gather_info', methods=['GET', 'POST'])
 def gather_info():

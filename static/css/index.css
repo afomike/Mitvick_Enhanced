@@ -203,6 +203,7 @@ button{
 }
 
 .form-container {
+    width: 30%;
     background-color: white;
     padding: 2em;
     border-radius: 8px;
@@ -242,6 +243,7 @@ button:hover {
 .register-link {
     margin-top: 1em;
     text-align: center;
+    color: #2196F3;
 }
 
 .register-link a {
@@ -252,3 +254,12 @@ button:hover {
 .register-link a:hover {
     text-decoration: underline;
 }
+
+.image {
+    background: url('../images/background.png') no-repeat; 
+    background-size: cover;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px; 
+    margin: auto;
+    }

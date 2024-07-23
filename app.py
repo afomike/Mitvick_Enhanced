@@ -59,9 +59,9 @@ class Retreat(db.Model):
     retreat_details = db.Column(db.Text)
     reflection = db.Column(db.Text)
 
-# Create the database and tables
-with app.app_context():
-    db.create_all()
+# # Create the database and tables
+# with app.app_context():
+#     db.create_all()
 
 # Define routes and view functions
 @login_manager.user_loader
@@ -73,12 +73,23 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user = User.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password, password):
-            login_user(user)
-            return redirect(url_for('index'))
-        else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
+        
+        try:
+            # Query for the user by username
+            user = User.query.filter_by(username=username).first()
+            
+            if user and check_password_hash(user.password, password):
+                login_user(user)
+                flash('Login successful!', 'success')
+                return redirect(url_for('index'))
+            else:
+                flash('Login Unsuccessful. Please check username and/or password', 'danger')
+        
+        except Exception as e:
+            flash('An error occurred during login. Please try again later.', 'danger')
+            # Log the error for debugging purposes
+            app.logger.error(f'Login error: {e}')
+    
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -87,19 +98,29 @@ def register():
         username = request.form['username']
         password = request.form['password']
         
+        # Check if the username already exists
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            flash('Username already exists. Please choose a different username.', 'danger')
+            return redirect(url_for('register'))
+        
         # Hash the password
         hashed_password = generate_password_hash(password, method='sha256')
         
         # Create a new user with the hashed password
         new_user = User(username=username, password=hashed_password)
         
-        db.session.add(new_user)
-        db.session.commit()
-        
-        flash('Your account has been created! You are now able to log in', 'success')
-        return redirect(url_for('login'))
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Your account has been created! You are now able to log in', 'success')
+            return redirect(url_for('login'))
+        except IntegrityError:
+            db.session.rollback()
+            flash('An error occurred while creating your account. Please try again.', 'danger')
     
     return render_template('register.html')
+
 
 @app.route('/logout')
 @login_required

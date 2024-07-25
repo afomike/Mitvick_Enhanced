@@ -80,16 +80,15 @@ def index():
             
             if user and check_password_hash(user.password, password):
                 login_user(user)
-                notify="welcome {username}"
-                return render_template('home.html', notify)
-                # return redirect(url_for('home'))
+                notify=f"welcome {username}"
+                return render_template('home.html', notify=notify)
             else:
                 notify="Login Unsuccessful. Please check username and/or password"
-                return render_template('index.html', notify)
+                return render_template('index.html', notify=notify)
         
         except Exception as e:
             notify="An error occurred during login. Please try again later."
-            return render_template('index.html', notify)
+            return render_template('index.html', notify=notify)
             # Log the error for debugging purposes
             app.logger.error(f'Login error: {e}')
     
@@ -105,7 +104,7 @@ def register():
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             notify="Username already exists. Please choose a different username."
-            return render_template('register.html', notify)
+            return render_template('register.html', notify=notify)
         
         # Hash the password
         hashed_password = generate_password_hash(password, method='sha256')
@@ -116,13 +115,13 @@ def register():
         try:
             db.session.add(new_user)
             db.session.commit()
-            notify = "Your account has been created! You are now able to log in'"
-            return render_template('register.html', notify)
+            notify = "Your account has been created! You are now able to log in"
+            return render_template('index.html', notify=notify)
             # return redirect(url_for('index'))
         except IntegrityError:
             db.session.rollback()
             notify = "An error occurred while creating your account. Please try again."
-            return render_template('register.html', notify)
+            return render_template('register.html', notify=notify)
     return render_template('register.html')
 
 

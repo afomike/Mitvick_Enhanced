@@ -210,24 +210,24 @@ button{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-form {
+.log_reg form {
     display: flex;
     flex-direction: column;
 }
 
-label {
+.log_reg label {
     margin-bottom: 0.5em;
     color: #333;
 }
 
-input[type="text"], input[type="password"] {
+.log_reg input[type="text"], .log_reg input[type="password"] {
     padding: 0.5em;
     margin-bottom: 1em;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-button {
+.log_reg button {
     padding: 0.5em;
     background-color: #4CAF50;
     color: white;
@@ -236,7 +236,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.log_reg button:hover {
     background-color: #45a049;
 }
 

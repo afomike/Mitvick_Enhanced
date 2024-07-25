@@ -5,13 +5,24 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-# app.secret_key = os.urandom(12).hex()
-app.config['SECRET_KEY'] = os.urandom(12).hex()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///attack_cycle.db'
+
+# Set SECRET_KEY
+app.config['SECRET_KEY'] = os.urandom(24).hex()
+
+# Set up database
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+if not os.path.exists(DATA_DIR):
+    os.makedirs(DATA_DIR)
+    print(f"Created directory: {DATA_DIR}")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(DATA_DIR, 'attack_cycle.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
+
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -107,7 +118,7 @@ def register():
             return render_template('register.html', notify=notify)
         
         # Hash the password
-        hashed_password = generate_password_hash(password, method='sha256')
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
         
         # Create a new user with the hashed password
         new_user = User(username=username, password=hashed_password)

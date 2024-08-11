@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Execution of the Attack</h1>
+        <h1>Detection of the Attack</h1>
         <nav>
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -24,8 +24,8 @@
     <div class="bg-image"></div>
     <main>
         <section>
-            <h2>predictionForm</h2>
-            <form id="predictionForm">
+            <h2>Detection Form</h2>
+            <form id="predictionForm" action="{{ url_for('predict') }}">
                 <label for="Time">Time:</label><br>
                 <input type="text" id="Time" name="Time"><br><br>
             

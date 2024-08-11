@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import joblib
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -10,7 +10,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 # Load your trained model
-model = load_model('your_model_path.pkl')
+model = load_model('model/ann_model.h5')
 
 
 

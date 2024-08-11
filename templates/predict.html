@@ -24,30 +24,94 @@
     <div class="bg-image"></div>
     <main>
         <section>
-            <h2>Execute the Attack</h2>
-            <form method="POST" action="{{ url_for('execute_attack') }}">
-                <div>
-                    <label for="attack_method">Method of Attack:</label>
-                    <input type="text" id="attack_method" name="attack_method" required>
-                </div>
-                <div>
-                    <label for="attack_target">Target of the Attack:</label>
-                    <input type="text" id="attack_target" name="attack_target" required>
-                </div>
-                <div>
-                    <label for="attack_details">Details of the Attack:</label>
-                    <textarea id="attack_details" name="attack_details"></textarea>
-                </div>
-                <div>
-                    <label for="outcome">Outcome of the Attack:</label>
-                    <textarea id="outcome" name="outcome"></textarea>
-                </div>
-                <button type="submit">Submit</button>
+            <h2>predictionForm</h2>
+            <form id="predictionForm">
+                <label for="Time">Time:</label><br>
+                <input type="text" id="Time" name="Time"><br><br>
+            
+                <label for="Protocol">Protocol:</label><br>
+                <input type="text" id="Protocol" name="Protocol"><br><br>
+            
+                <label for="Flag">Flag:</label><br>
+                <input type="text" id="Flag" name="Flag"><br><br>
+            
+                <label for="Family">Family:</label><br>
+                <input type="text" id="Family" name="Family"><br><br>
+            
+                <label for="Clusters">Clusters:</label><br>
+                <input type="text" id="Clusters" name="Clusters"><br><br>
+            
+                <label for="SeedAddress">Seed Address:</label><br>
+                <input type="text" id="SeedAddress" name="SeedAddress"><br><br>
+            
+                <label for="ExpAddress">Exp Address:</label><br>
+                <input type="text" id="ExpAddress" name="ExpAddress"><br><br>
+            
+                <label for="BTC">BTC:</label><br>
+                <input type="text" id="BTC" name="BTC"><br><br>
+            
+                <label for="USD">USD:</label><br>
+                <input type="text" id="USD" name="USD"><br><br>
+            
+                <label for="NetflowBytes">Netflow Bytes:</label><br>
+                <input type="text" id="NetflowBytes" name="NetflowBytes"><br><br>
+            
+                <label for="IPaddress">IP Address:</label><br>
+                <input type="text" id="IPaddress" name="IPaddress"><br><br>
+            
+                <label for="Threats">Threats:</label><br>
+                <input type="text" id="Threats" name="Threats"><br><br>
+            
+                <label for="Port">Port:</label><br>
+                <input type="text" id="Port" name="Port"><br><br>
+            
+                <button type="submit">Predict</button>
             </form>
+            
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Enhanced SE Attack Cycle</p>
     </footer>
+    <script>
+    document.getElementById('predictionForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Collect all the feature values
+    const features = {
+        Time: parseFloat(document.getElementById('Time').value),
+        Protocol: parseInt(document.getElementById('Protocol').value),
+        Flag: parseInt(document.getElementById('Flag').value),
+        Family: parseInt(document.getElementById('Family').value),
+        Clusters: parseFloat(document.getElementById('Clusters').value),
+        SeedAddress: parseInt(document.getElementById('SeedAddress').value),
+        ExpAddress: parseInt(document.getElementById('ExpAddress').value),
+        BTC: parseFloat(document.getElementById('BTC').value),
+        USD: parseFloat(document.getElementById('USD').value),
+        NetflowBytes: parseFloat(document.getElementById('NetflowBytes').value),
+        IPaddress: parseInt(document.getElementById('IPaddress').value),
+        Threats: parseInt(document.getElementById('Threats').value),
+        Port: parseFloat(document.getElementById('Port').value)
+    };
+
+    // Send the features array to the Flask API
+    fetch('/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(features),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display the prediction result
+        alert('Predicted Class: ' + data.prediction);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
+    </script>
 </body>
 </html>

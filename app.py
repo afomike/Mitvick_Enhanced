@@ -1,8 +1,18 @@
 import os
+import numpy as np
+import joblib
+from keras.models import load_model
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+
+app = Flask(__name__)
+
+# Load your trained model
+model = load_model('your_model_path.pkl')
+
+
 
 app = Flask(__name__)
 
@@ -270,6 +280,32 @@ def delete_entry(entry_id):
     db.session.delete(entry)
     db.session.commit()
     return redirect(url_for('view_entries'))
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+    features = np.array([[
+        data['Time'],
+        data['Protocol'],
+        data['Flag'],
+        data['Family'],
+        data['Clusters'],
+        data['SeedAddress'],
+        data['ExpAddress'],
+        data['BTC'],
+        data['USD'],
+        data['NetflowBytes'],
+        data['IPaddress'],
+        data['Threats'],
+        data['Port']
+    ]])
+
+    # Make a prediction
+    prediction = model.predict(features)
+
+    # Return the prediction as a JSON response
+    return jsonify({'prediction': prediction[0]})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

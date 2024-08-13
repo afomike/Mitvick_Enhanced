@@ -281,30 +281,32 @@ def delete_entry(entry_id):
     db.session.commit()
     return redirect(url_for('view_entries'))
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    data = request.json
-    features = np.array([[
-        data['Time'],
-        data['Protocol'],
-        data['Flag'],
-        data['Family'],
-        data['Clusters'],
-        data['SeedAddress'],
-        data['ExpAddress'],
-        data['BTC'],
-        data['USD'],
-        data['NetflowBytes'],
-        data['IPaddress'],
-        data['Threats'],
-        data['Port']
-    ]])
+    if request.method == 'POST': 
+        data = request.json
+        features = np.array([[
+            data['Time'],
+            data['Protocol'],
+            data['Flag'],
+            data['Family'],
+            data['Clusters'],
+            data['SeedAddress'],
+            data['ExpAddress'],
+            data['BTC'],
+            data['USD'],
+            data['NetflowBytes'],
+            data['IPaddress'],
+            data['Threats'],
+            data['Port']
+        ]])
 
-    # Make a prediction
-    prediction = model.predict(features)
+        # Make a prediction
+        prediction = model.predict(features)
 
-    # Return the prediction as a JSON response
-    return jsonify({'prediction': prediction[0]})
+        # Return the prediction as a JSON response
+        return jsonify({'prediction': prediction[0]})
+    return render_template('predict.html')
 
 
 if __name__ == '__main__':

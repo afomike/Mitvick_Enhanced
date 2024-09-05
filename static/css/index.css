@@ -265,12 +265,12 @@ button{
     }
 
 .predict_form{
-    margin-top: 100px;
     height: 60vh;
     overflow: scroll;
     overflow-x: hidden;
-    /* position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50% -60%); */
+    /* background-color: red; */
+    position: absolute;
+    top: -450%;
+    left: 20%;
+    transform: translate(-10% -200%);
 }

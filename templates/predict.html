@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Execution of the Attack</title>
+    <title>Detection of the Attack</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
@@ -23,8 +23,8 @@
     </header>
     <div class="bg-image"></div>
     <main>
-        <section class="main">
-            <h2>Detection Form</h2>
+        <section class="predict_form">
+            <!-- <h2>Detection Form</h2> -->
             <form id="predictionForm" action="{{ url_for('predict') }}">
                 <label for="Time">Time:</label><br>
                 <input type="text" id="Time" name="Time"><br><br>
